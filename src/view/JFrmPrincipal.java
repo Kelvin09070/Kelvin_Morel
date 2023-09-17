@@ -18,6 +18,12 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         initComponents();
         setTitle("Sistema de compra e venda");        
         setExtendedState(MAXIMIZED_BOTH);
+        JDlgLogin jDlgLogin = new JDlgLogin(this, true);
+       jDlgLogin.setVisible(true);
+    }
+
+    JFrmPrincipal(JDlgLogin aThis, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -60,8 +66,14 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMnuCadastros.add(jMnuUsuarios);
 
         jMnuClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMnuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cliente.png"))); // NOI18N
         jMnuClientes.setMnemonic('C');
         jMnuClientes.setText("Clientes");
+        jMnuClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuClientesActionPerformed(evt);
+            }
+        });
         jMnuCadastros.add(jMnuClientes);
         jMnuCadastros.add(jSeparator1);
 
@@ -82,7 +94,13 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMnuMovimentos.setText("Movimentos");
 
         jMnuVendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        jMnuVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/produto.png"))); // NOI18N
         jMnuVendas.setText("Vendas");
+        jMnuVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuVendasActionPerformed(evt);
+            }
+        });
         jMnuMovimentos.add(jMnuVendas);
 
         jMenuBar1.add(jMnuMovimentos);
@@ -119,6 +137,18 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jDlgUsuarios.setVisible(true);
                 
     }//GEN-LAST:event_jMnuUsuariosActionPerformed
+
+    private void jMnuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuClientesActionPerformed
+        // TODO add your handling code here:
+        JDlgCliente jDlgCliente = new JDlgCliente(this, true);
+        jDlgCliente.setVisible(true);
+    }//GEN-LAST:event_jMnuClientesActionPerformed
+
+    private void jMnuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendasActionPerformed
+        // TODO add your handling code here:
+        JDlgVendasNovoIA jDlgVendasNovoIA = new JDlgVendasNovoIA(this, true);
+        jDlgVendasNovoIA.setVisible(true);
+    }//GEN-LAST:event_jMnuVendasActionPerformed
 
     /**
      * @param args the command line arguments

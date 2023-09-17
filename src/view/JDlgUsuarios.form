@@ -27,7 +27,7 @@
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jTxtNome" max="32767" attributes="0"/>
-                  <Component id="jTxtApedido" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTxtSobrenome" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPwfSenha" min="-2" pref="136" max="-2" attributes="0"/>
@@ -94,7 +94,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jTxtApedido" min="-2" max="-2" attributes="0"/>
+              <Component id="jTxtSobrenome" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -153,11 +153,11 @@
         <Property name="text" type="java.lang.String" value="Nome"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTxtApedido">
+    <Component class="javax.swing.JTextField" name="jTxtSobrenome">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Apelido"/>
+        <Property name="text" type="java.lang.String" value="Sobrenome"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">

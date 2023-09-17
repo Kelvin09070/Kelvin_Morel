@@ -11,23 +11,21 @@ import tools.Util;
  *
  * @author u09656283104
  */
-public class JDlgUsuariosNovo extends javax.swing.JDialog {
+public class JDlgVendasNovo extends javax.swing.JDialog {
 
     /**
      * Creates new form JDlgUsuariosNovo1
      */
-    private JDlgUsuariosNovoIA jDlgUsuariosNovoIA;
+    private JDlgVendasNovoIA jDlgVendasNovoIA;
     
-    public JDlgUsuariosNovo(java.awt.Frame parent, boolean modal) {
+    public JDlgVendasNovo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Cadastro de Usuários");
+        setTitle("Vendas");
         setLocationRelativeTo(null);
         
-        jDlgUsuariosNovoIA = new JDlgUsuariosNovoIA(null, true);
+        jDlgVendasNovoIA = new JDlgVendasNovoIA(null, true);
         
-        UsuariosController usuariosController = new UsuariosController();
-        jTable1.setModel(usuariosController);
     }
 
     /**
@@ -65,6 +63,7 @@ public class JDlgUsuariosNovo extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir.png"))); // NOI18N
         jBtnIncluir.setText("Incluir");
         jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +72,7 @@ public class JDlgUsuariosNovo extends javax.swing.JDialog {
         });
         jPanel1.add(jBtnIncluir);
 
+        jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
         jBtnAlterar.setText("Alterar");
         jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +81,7 @@ public class JDlgUsuariosNovo extends javax.swing.JDialog {
         });
         jPanel1.add(jBtnAlterar);
 
+        jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
         jBtnExcluir.setText("Excluir");
         jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,13 +107,13 @@ public class JDlgUsuariosNovo extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 807, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -122,8 +123,8 @@ public class JDlgUsuariosNovo extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-     jDlgUsuariosNovoIA.setTitle("Inclusão");
-        jDlgUsuariosNovoIA.setVisible(true);
+     jDlgVendasNovoIA.setTitle("Inclusão");
+        jDlgVendasNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
@@ -135,8 +136,8 @@ public class JDlgUsuariosNovo extends javax.swing.JDialog {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-         jDlgUsuariosNovoIA.setTitle("Alteração");
-        jDlgUsuariosNovoIA.setVisible(true);
+         jDlgVendasNovoIA.setTitle("Alteração");
+        jDlgVendasNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     /**
@@ -156,21 +157,27 @@ public class JDlgUsuariosNovo extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuariosNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendasNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuariosNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendasNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuariosNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendasNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuariosNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendasNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgUsuariosNovo dialog = new JDlgUsuariosNovo(new javax.swing.JFrame(), true);
+                JDlgVendasNovo dialog = new JDlgVendasNovo(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

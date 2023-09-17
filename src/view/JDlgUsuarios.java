@@ -5,8 +5,9 @@
  */
 package view;
 
-import bean.Usuarios;
-import dao.UsuariosDAO;
+import bean.KvmUsuario;
+import bean.KvmUsuarioId;
+import dao.Usuario_DAO;
 import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,7 +50,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     public void habilitar() {
         jTxtCodigo.setEnabled(true);
         jTxtNome.setEnabled(true);
-        jTxtApedido.setEnabled(true);
+        jTxtSobrenome.setEnabled(true);
         jFmtCpf.setEnabled(true);
         jFmtDataNascimento.setEnabled(true);
         jPwfSenha.setEnabled(true);
@@ -67,7 +68,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     public void desabilitar() {
         jTxtCodigo.setEnabled(false);
         jTxtNome.setEnabled(false);
-        jTxtApedido.setEnabled(false);
+        jTxtSobrenome.setEnabled(false);
         jFmtCpf.setEnabled(false);
         jFmtDataNascimento.setEnabled(false);
         jPwfSenha.setEnabled(false);
@@ -86,7 +87,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     public void limparCampos() {
         jTxtCodigo.setText("");
         jTxtNome.setText("");
-        jTxtApedido.setText("");
+        jTxtSobrenome.setText("");
         jFmtCpf.setText("");
         jFmtDataNascimento.setText("");
         jPwfSenha.setText("");
@@ -94,45 +95,67 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         jChbAtivo.setSelected(false);
     }
 
-    public Usuarios viewBean() {
-        Usuarios usuarios = new Usuarios();
-        usuarios.setIdUsuarios(Util.strInt(jTxtCodigo.getText()));
-        usuarios.setNome(jTxtNome.getText());
-        usuarios.setApelido(jTxtApedido.getText());
-        usuarios.setCpf(jFmtCpf.getText());        
+    public KvmUsuario viewBean() {
+        KvmUsuario kvmUsuario = new KvmUsuario();
+        kvmUsuario.setKvmNome(jTxtNome.getText());
+        kvmUsuario.setKvmSobrenome(jTxtSobrenome.getText());
+        kvmUsuario.setKvmCpf(jFmtCpf.getText());        
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            usuarios.setDataNascimento(formato.parse(jFmtDataNascimento.getText()));
+            kvmUsuario.setKvmNascimento(formato.parse(jFmtDataNascimento.getText()));
         } catch (ParseException ex) {
             Logger.getLogger(JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-        usuarios.setSenha(jPwfSenha.getText());
-        usuarios.setNivel(jCboNivel.getSelectedIndex());
-        if (jChbAtivo.isSelected() == true) {
-            usuarios.setAtivo("S");
-        } else {
-            usuarios.setAtivo("N");
-        }
-        return usuarios;
-    }
-
-    public void beanView(Usuarios usuarios) {
-        String cad = String.valueOf(usuarios.getIdUsuarios());
-        jTxtCodigo.setText(cad);        
-        jTxtNome.setText(usuarios.getNome());
-        jTxtApedido.setText(usuarios.getApelido());
-        jFmtCpf.setText(usuarios.getCpf());
-        jPwfSenha.setText(usuarios.getSenha());
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        jFmtDataNascimento.setText( formato.format(usuarios.getDataNascimento() ));
+        kvmUsuario.setKvmSenha(jPwfSenha.getText());
         
-        jCboNivel.setSelectedIndex(usuarios.getNivel());
-        if (usuarios.getAtivo().equals("S") == true) {
+        if (jChbAtivo.isSelected() == true) {
+            kvmUsuario.setKvmAtivo("S");
+        } else {
+            kvmUsuario.setKvmAtivo("N");
+        }
+        return kvmUsuario;
+    }   
+    
+    
+    
+    
+    
+    public KvmUsuarioId viewBean2() {
+        KvmUsuarioId kvmUsuarioId = new KvmUsuarioId();
+        kvmUsuarioId.setIdKvmUsuario(Util.strInt(jTxtCodigo.getText()));
+        kvmUsuarioId.setKvmNivel(jCboNivel.getSelectedIndex());
+
+        
+        
+        
+        
+        
+       //Nao sei o motivo desse erro abaixo//  
+    public void beanView(KvmUsuario kvmUsuario) {
+        String cad = String.valueOf(kvmUsuario.getId());
+        jTxtCodigo.setText(cad);        
+        jTxtNome.setText(kvmUsuario.getKvmNome());
+        jTxtSobrenome.setText(kvmUsuario.getKvmSobrenome());
+        jFmtCpf.setText(kvmUsuario.getKvmCpf());
+        jPwfSenha.setText(kvmUsuario.getKvmSenha());
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        jFmtDataNascimento.setText( formato.format(kvmUsuario.getKvmNascimento() ));
+        
+       
+        if (kvmUsuario.getKvmAtivo().equals("S") == true) {
             jChbAtivo.setSelected(true);
         } else {
             jChbAtivo.setSelected(false);
         }
     }
+    
+    public void beanView2(KvmUsuarioId kvmUsuarioId) {
+        String cad = String.valueOf(kvmUsuarioId.getIdKvmUsuario());
+         jCboNivel.setSelectedIndex(kvmUsuarioId.getKvmNivel());
+        
+    }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -147,7 +170,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         jTxtCodigo = new javax.swing.JTextField();
         jTxtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTxtApedido = new javax.swing.JTextField();
+        jTxtSobrenome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jFmtCpf = new javax.swing.JFormattedTextField();
@@ -171,7 +194,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
         jLabel2.setText("Nome");
 
-        jLabel3.setText("Apelido");
+        jLabel3.setText("Sobrenome");
 
         jLabel4.setText("CPF");
 
@@ -241,7 +264,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTxtNome)
-                    .addComponent(jTxtApedido)
+                    .addComponent(jTxtSobrenome)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPwfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,7 +318,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jTxtApedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -340,12 +363,12 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-        Usuarios usuarios = viewBean();
-        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        KvmUsuario kvmUsuario = viewBean();
+        Usuario_DAO usuarioDAO = new Usuario_DAO();
         if (incluindo == true) {
-            usuariosDAO.insert(usuarios);
+            usuarioDAO.insert(kvmUsuario);
         } else {
-            usuariosDAO.update(usuarios);
+            usuarioDAO.update(kvmUsuario);
         }
 
         desabilitar();
@@ -353,15 +376,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        // TODO add your handling code here:
-//        String resp = JOptionPane.showInputDialog(null, "Entre com a chave priária (PK)");
-//        UsuariosDAO usuariosDAO = new UsuariosDAO();
-//        int id = Integer.valueOf(resp);
-//        Usuarios usuarios = (Usuarios) usuariosDAO.list(id);
-//        beanView(usuarios);
-        JDlgUsuariosPesquisar jDlgUsuariosPesquisar = new JDlgUsuariosPesquisar(null, true);
-        jDlgUsuariosPesquisar.setTelaAnterior(this);        
-        jDlgUsuariosPesquisar.setVisible(true);
+        // TODO add your handling code here: //
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
@@ -381,15 +396,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
         
-        Util.perguntar("Deseja excluir registro?");
-        if (resp == JOptionPane.YES_OPTION) {
-           
-            
-        } else {
-         
-            Util.mensagem("Exclusão cancelada");
-        }
-        limparCampos();
+          if (Util.perguntar("Deseja excluir o registro") == true ){
+       }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     /**
@@ -453,8 +461,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPasswordField jPwfSenha;
-    private javax.swing.JTextField jTxtApedido;
     private javax.swing.JTextField jTxtCodigo;
     private javax.swing.JTextField jTxtNome;
+    private javax.swing.JTextField jTxtSobrenome;
     // End of variables declaration//GEN-END:variables
 }
